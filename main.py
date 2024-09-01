@@ -20,7 +20,7 @@ def get_weather():
 
     weather_data = weather(city)  # Call weather function to get weather data for the city
 
-    if (weather_data['cod'] == '404' or weather_data['cod'] == '400'):  # Check if weather data contains error code
+    if not(weather_data['cod'] == 200):  # Check if weather data contains error code
         return render_template('error.html', api_key=API_KEY)  # Render error.html template with API key
 
     return render_template (
