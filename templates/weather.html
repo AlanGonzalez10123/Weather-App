@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} Weather</title>
     <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
+    <script> const apiKey = "{{ api_key }}"; </script>
+    <script src="{{ url_for('static', filename='scripts/script.js') }}" defer></script>
 </head>
 <body>
     <h1>{{ title }} Weather</h1>
@@ -16,11 +18,14 @@
 
 
 
-    <form action="/weather">
+    <form action="/weather" id="location-form">
         <input type="text" name="city" id="city" placeholder="Enter City: " />
         <button type="submit">
             <span>Generate</span>
         </button>
+
+        <button type="button" onclick="getLocation()">Use My Location</button>
+
     </form>
 </body>
 </html>

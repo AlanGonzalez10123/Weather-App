@@ -1,13 +1,15 @@
 from flask import Flask, render_template, request
 from weather import weather
 from waitress import serve
+import os
 
 app = Flask(__name__)
+API_KEY = os.getenv("API_KEY")
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', api_key=API_KEY)
 
 @app.route('/weather')
 def get_weather():
@@ -18,8 +20,8 @@ def get_weather():
 
     weather_data = weather(city)
 
-    if (weather_data['cod'] == '404'):
-        return render_template('error.html')
+    if (weather_data['cod'] == '404' or weather_data['cod'] == '400'):
+        return render_template('error.html', api_key=API_KEY)
 
     return render_template (
         "weather.html",
@@ -28,7 +30,8 @@ def get_weather():
         temp = f"{weather_data['main']['temp']:.1f}",
         feels_like = f"{weather_data['main']['feels_like']:.1f}",
         humidity = weather_data['main']['humidity'],
-        wind_speed = weather_data['wind']['speed']
+        wind_speed = weather_data['wind']['speed'],
+        api_key=API_KEY
     )
 
 if __name__ == "__main__":
