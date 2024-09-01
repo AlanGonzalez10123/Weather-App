@@ -13,16 +13,22 @@ def index():
 def get_weather():
     city = request.args.get('city')
 
+    if not bool(city.strip()):
+        city = 'Alexandria' #DEFAULT
+
     weather_data = weather(city)
 
-    print(weather_data['name'])
+    if (weather_data['cod'] == '404'):
+        return render_template('error.html')
 
     return render_template (
         "weather.html",
         title = weather_data["name"],
         status = weather_data["weather"][0]["description"].capitalize(),
         temp = f"{weather_data['main']['temp']:.1f}",
-        feels_like = f"{weather_data['main']['feels_like']:.1f}"
+        feels_like = f"{weather_data['main']['feels_like']:.1f}",
+        humidity = weather_data['main']['humidity'],
+        wind_speed = weather_data['wind']['speed']
     )
 
 if __name__ == "__main__":
