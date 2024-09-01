@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link href="{{ url_for('static', filename='styles/style.css')}}" rel="stylesheet" />
+</head>
+<body>
+    <h2>Project submitted as an assessment for the Software Engineer Intern - AI/ML Application Tech Assessment for PM Accelerator. </h2>
+    <h3>About PM</h3>
+    <p>The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career. From students 
+        looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students 
+        fulfill their career aspirations. Our Product Manager Accelerator community are ambitious and committed. Through our program they 
+        have learnt, honed and developed new PM and leadership skills, giving them a strong foundation for their future endeavours.
+    </p>
+
+    <h3>About This Project</h3>
+    <p>Used python and flask to fetch weather data from openweather API. Displayed data and received user input using HTML and applied basic styling with CSS. 
+        Used JavaScript and Geolocation API to fetch user location and then use it for weather retrieval.
+        Straighforward to use page. Simply type in the city you want the current weather from and click 'generate'. '
+        You will then be redirected to a page displaying some current weather data relating to the city the user input.
+        If the user clicks 'Use My Location', the input will autofill and redirect automatically to search for the weather of the User's current location.</p>
+    
+    <button onclick="window.location.href='{{ url_for('index') }}'">Back to Main Page</button>
+</body>
+</html>

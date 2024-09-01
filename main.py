@@ -34,5 +34,9 @@ def get_weather():
         api_key=API_KEY
     )
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port =8000)  # Start the server and listen on port 8000

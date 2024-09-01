@@ -9,6 +9,10 @@
     <script src="{{ url_for('static', filename='scripts/script.js') }}" defer></script>
 </head>
 <body>
+    <h1>Project/Assessment by: Alan Gonzalez Osorio</h1>
+    <button onclick="window.location.href='{{ url_for('about') }}'">About This Project</button>
+
+
     <h1>Enter Weather</h1>
     <form action="/weather" id="location-form">
         <input type="text" name="city" id="city" placeholder="Enter City: " />
